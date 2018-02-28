@@ -22,7 +22,6 @@ int main(int argc, char *argv[]) {
     };
 
     int numInStorage = atoi(buff);
-    printf("%d", numInStorage); 
 
     numInStorage -= 3;
 
@@ -35,7 +34,9 @@ int main(int argc, char *argv[]) {
         perror("Error writing to file: ");
         exit(0);   
     }else{
-     //   execlp("./consumer
+        printf("from consumer: current total is %d\n", numInStorage); 
+        fflush();
+        execl("./producer","producer", (char *)0); 
     }
 
 }
