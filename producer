@@ -1,16 +1,21 @@
 #!/bin/bash
 
-numInStorage=$(cat storage)
-temp=$(( $numInStorage + 8 ))
 file="storage"
+read -r numInStorage < $file
+temp=$(( $numInStorage + 8 ))
+
+if (( $numInStorage < 5 || $numInStorage > 90 ))
+then
+    echo "Storage capacity violation!"
+    exit 0
+fi
 
 if (( $temp < 100 )) 
 then
     echo $temp > $file
     echo "from producer: current total is $temp"
+    ./consumer
 else
     echo "from producer: Now I will take a rest!"
-    exit 0
 fi
 
-`./consumer`
