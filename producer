@@ -1,0 +1,16 @@
+#!/bin/bash
+
+numInStorage=$(cat storage)
+temp=$(( $numInStorage + 8 ))
+file="storage"
+
+if (( $temp < 100 )) 
+then
+    echo $temp > $file
+    echo "from producer: current total is $temp"
+else
+    echo "from producer: Now I will take a rest!"
+    exit 0
+fi
+
+`./consumer`
