@@ -24,15 +24,34 @@ int main(int argc, char *argv[]) {
     int numInStorage = atoi(buff);
     printf("%d", numInStorage); 
 
-    if((numInStorage + 8) >= 100) {
-        exit(0);
-    }else{
-        numInStorage += 8;
-    }
+    numInStorage -= 3;
 
     //COnvert int to string
     sprintf(buff, "%d", numInStorage);
 
-    
+    //Seek to beginning of file and write new number
+    lseek(fd, 0, SEEK_SET);
+    if((write(fd, buff, sizeof buff)) < sizeof buff) {
+        perror("Error writing to file: ");
+        exit(0);   
+    }else{
+     //   execlp("./consumer
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
