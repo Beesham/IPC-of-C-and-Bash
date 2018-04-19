@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
         exit(0);   
     }else{
         printf("from consumer: current total is %d\n", numInStorage); 
-        fflush();
+//        fflush();
         execl("./producer","producer", (char *)0); 
     }
 
